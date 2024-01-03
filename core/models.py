@@ -2,6 +2,19 @@ import uuid
 from django.db import models
 from stdimage.models import StdImageField
 
+
+ICONE_CHOICES = {
+    ('lni-cog', 'Engrenagem'),
+    ('lni-stats-up', 'Gráfico'),
+    ('lni-users', 'Usuários'),
+    ('lni-layers', 'Design'),
+    ('lni-mobile', 'Mobile'),
+    ('lni-rocket', 'Foguete'),
+    ('lni-laptop-phone', 'Celular'),
+    ('lni-leaf', 'Folha'),
+    ('lni-layers', 'Camadas'),
+}
+
 def get_file_path(instance, filename):
     # mudar o nome dos arquivos salvos, para uma chave aleátoria
     ext = filename.split('.')[-1]
@@ -17,17 +30,9 @@ class Base(models.Model):
         abstract = True
 
 class Servico(Base):
-    ICONE_CHOICES = {
-        ('init-cog','Engrenagem'),
-        ('init-stats-up','Gráfico'),
-        ('init-users','Usuários'),
-        ('init-layers','Desing'),
-        ('init-mobile','Mobile'),
-        ('init-rocket','Foguete'),
-    }
     servico = models.CharField('Cargo', max_length=100)
     descricao = models.TextField('Descrição', max_length=200)
-    icone = models.CharField('Icone', max_length=13, choices=ICONE_CHOICES)
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
     
     class Meta:
         verbose_name = 'Serviço'
@@ -49,7 +54,7 @@ class Cargo(Base):
 class Equipe(Base):
     nome = models.CharField('Nome', max_length=100)
     cargo = models.ForeignKey("core.Cargo", verbose_name='Cargo', on_delete=models.CASCADE)
-    bio = models.TextField('Bio', max_length=200)
+    bio = models.TextField('Bio', max_length=100)
     image = StdImageField('Imagens', upload_to=get_file_path, variations={'thumb': {'width':480, 'height':480, 'crop': True}})
     facebook = models.CharField('Facebook', max_length=100, default='#')
     twitter = models.CharField('Twitter', max_length=100, default='#')
@@ -61,4 +66,15 @@ class Equipe(Base):
         
     def __str__(self):
         return self.nome
+
+class Recurso(Base):
+    nome = models.CharField('Nome', max_length=100)
+    descricao = models.TextField('Descrição', max_length=100)
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
+
+    class Meta:
+        verbose_name = 'Recurso'
+        verbose_name_plural = 'Recursos'
         
+    def __str__(self):
+        return self.nome
