@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -87,15 +88,7 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 # }
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'neondb',
-    'USER': 'LucasPires50',
-    'PASSWORD': 'rnmYhys6Me9o',
-    'HOST': 'ep-billowing-disk-61318142.us-east-2.aws.neon.tech',
-    'PORT': '5432',
-    'OPTIONS': {'sslmode': 'require'},
-  }
+    'default': dj_database_url.config()
 }
 
 
@@ -145,7 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email test console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 """
 # Email prod
@@ -156,3 +149,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = ''
 DEFAULT_FROM_EMAIL = ''
 """
+
+LOGOUT_REDIRECT_URL = 'index'

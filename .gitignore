@@ -1,1 +1,7 @@
 *.png
+_pychache
+*.*
+.env
+*pyc 
+.idea
+template/*
