@@ -12,7 +12,8 @@ psycopg2-binary = "^2.9.9"
 gunicorn = "^21.2.0"
 dj-static = "^0.0.6"
 django-stdimage = "^6.0.2"
-dj-database-url = "^2.1.0"
+django-adminlte2 = "^0.4.3"
+python-decouple = "^3.8"
 
 
 [build-system]
