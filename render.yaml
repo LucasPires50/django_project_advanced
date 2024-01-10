@@ -1,7 +1,7 @@
 databases:
   - name: fusion-lap
     databaseName: neondb
-    user: "LucasPires50"
+    user: neondb
 
 services:
   - type: web
