@@ -1,0 +1,19 @@
+databases:
+  - name: fusion-lap
+    databaseName: DB_NAME
+    user: DB_USER
+    password: DB_PASSWORD
+    host: DB_HOST
+    port: DB_PORT
+
+services:
+  - type: web
+    name: mysite
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mysite.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
