@@ -2,9 +2,6 @@ databases:
   - name: fusion-lap
     databaseName: DB_NAME
     user: DB_USER
-    password: DB_PASSWORD
-    host: DB_HOST
-    port: DB_PORT
 
 services:
   - type: web

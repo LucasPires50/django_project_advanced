@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,16 +86,25 @@ WSGI_APPLICATION = 'fusion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('DB_NAME', config('DB_NAME')),
+#         'USER': os.environ.get('DB_USER', config('DB_USER')),
+#         'PASSWORD': os.environ.get('DB_PASSWORD', config('DB_PASSWORD')),
+#         'HOST': os.environ.get('DB_HOST', config('DB_HOST')),
+#         'PORT': os.environ.get('DB_PORT', config('DB_PORT')),
+#         'OPTIONS': {'sslmode': 'require'},
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', config('DB_NAME')),
-        'USER': os.environ.get('DB_USER', config('DB_USER')),
-        'PASSWORD': os.environ.get('DB_PASSWORD', config('DB_PASSWORD')),
-        'HOST': os.environ.get('DB_HOST', config('DB_HOST')),
-        'PORT': os.environ.get('DB_PORT', config('DB_PORT')),
-        'OPTIONS': {'sslmode': 'require'},
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        # default='postgresql://postgres:postgres@localhost:5432/mysite',
+        default=f'postgresql://{os.environ.get('DB_USER', config('DB_USER'))}:{os.environ.get('DB_PASSWORD', config('DB_PASSWORD'))}@{eos.environ.get('DB_HOST', config('DB_HOST'))}:{os.environ.get('DB_PORT', config('DB_PORT'))}/{os.environ.get('DB_NAME', config('DB_NAME'))}?sslmode=require',
+        conn_max_age=600
+    )
 }
 
 # Password validation
