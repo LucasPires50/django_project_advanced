@@ -29,7 +29,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', config('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG', "False").lower == "true"
 
-DEBUG = 'RENDER' not in os.environ
+DEBUG = os.environ.get('DEBUG', config('DEBUG'))
+print(DEBUG)
 ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -142,11 +143,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
