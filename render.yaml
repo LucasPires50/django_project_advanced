@@ -1,7 +1,7 @@
 databases:
   - name: fusion-lap
     databaseName: neondb
-    user: LucasPires50
+    user: "LucasPires50"
 
 services:
   - type: web
@@ -12,7 +12,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: neondb
+          name: mysite
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
