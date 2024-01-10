@@ -102,7 +102,7 @@ DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
         # default='postgresql://postgres:postgres@localhost:5432/mysite',
-        default=f'postgresql://{os.environ.get('DB_USER', config('DB_USER'))}:{os.environ.get('DB_PASSWORD', config('DB_PASSWORD'))}@{eos.environ.get('DB_HOST', config('DB_HOST'))}:{os.environ.get('DB_PORT', config('DB_PORT'))}/{os.environ.get('DB_NAME', config('DB_NAME'))}?sslmode=require',
+        default=f"postgresql://{os.environ.get('DB_USER', config('DB_USER'))}:{os.environ.get('DB_PASSWORD', config('DB_PASSWORD'))}@{os.environ.get('DB_HOST', config('DB_HOST'))}:{os.environ.get('DB_PORT', config('DB_PORT'))}/{os.environ.get('DB_NAME', config('DB_NAME'))}?sslmode=require",
         conn_max_age=600
     )
 }
