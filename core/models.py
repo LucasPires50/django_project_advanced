@@ -1,5 +1,7 @@
 import uuid
 from django.db import models
+from djmoney.models.fields import MoneyField
+from django.core.validators import MinValueValidator
 from stdimage.models import StdImageField
 
 
@@ -13,6 +15,9 @@ ICONE_CHOICES = {
     ('lni-laptop-phone', 'Celular'),
     ('lni-leaf', 'Folha'),
     ('lni-layers', 'Camadas'),
+    ('lni-package', 'Caixa'),
+    ('lni-drop', 'Gota'),
+    ('lni-star', 'Estrela'),
 }
 
 def get_file_path(instance, filename):
@@ -75,6 +80,22 @@ class Recurso(Base):
     class Meta:
         verbose_name = 'Recurso'
         verbose_name_plural = 'Recursos'
+        
+    def __str__(self):
+        return self.nome
+    
+class Plano(Base):
+    nome = models.CharField('Name', max_length=50)
+    valor = MoneyField('Valor', max_digits=4, decimal_places=0, default_currency='BRL', validators=[MinValueValidator(0)])
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
+    numero_usuarios = models.CharField('Número de usuários', max_length=50)
+    armazenamento = models.CharField('Armazenamento', max_length=50)
+    tipo_suporte = models.CharField('Tipo de suporte', max_length=50)
+    atualizacao = models.CharField('Atualização', max_length=50)
+
+    class Meta:
+        verbose_name = 'Plano'
+        verbose_name_plural = 'Planos'
         
     def __str__(self):
         return self.nome

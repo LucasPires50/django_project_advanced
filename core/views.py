@@ -3,7 +3,7 @@ from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-from .models import Servico, Equipe, Recurso
+from .models import Servico, Equipe, Recurso, Plano
 from .forms import ContatoForm
 
 class IndexView(FormView):
@@ -18,6 +18,7 @@ class IndexView(FormView):
         context['servicos'] = Servico.objects.order_by('?').all() # Vai ordenar por qualquer campo de forma aleátoria 
         context['equipes'] = Equipe.objects.order_by('?').all()
         context['recursos'] = Recurso.objects.order_by('?').all()
+        context['planos'] = Plano.objects.order_by('valor').all().filter(ativo=True)
         
         return context
     
