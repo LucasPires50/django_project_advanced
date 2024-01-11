@@ -172,20 +172,6 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
-name = "django-adminlte2"
-version = "0.4.3"
-description = "Admin LTE templates, admin theme, and template tags for Django"
-optional = false
-python-versions = "*"
-files = [
-    {file = "django-adminlte2-0.4.3.tar.gz", hash = "sha256:60c1c049ce66081c1a67669686ffbde2f530544ddfe9e681395197973050f614"},
-    {file = "django_adminlte2-0.4.3-py3-none-any.whl", hash = "sha256:327fc90bae2b4a3b599bc60018071bedfd87dfc724b1d2d62b3c112b7adfdc11"},
-]
-
-[package.dependencies]
-django = "*"
-
-[[package]]
 name = "django-money"
 version = "3.4.1"
 description = "Adds support for using money and currency fields in django models and forms. Uses py-moneyed as the money implementation."
@@ -204,6 +190,20 @@ setuptools = "*"
 [package.extras]
 exchange = ["certifi"]
 test = ["django-stubs", "mixer", "mypy", "pytest (>=3.1.0,<7.0)", "pytest-cov", "pytest-django", "pytest-pythonpath"]
+
+[[package]]
+name = "django-semantic-admin"
+version = "0.4.0"
+description = "Django Semantic UI Admin theme"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django_semantic_admin-0.4.0-py3-none-any.whl", hash = "sha256:a7c2c93f938a9c882df81dba6a8e024e9029403435966a13a02808e10d5efd93"},
+    {file = "django_semantic_admin-0.4.0.tar.gz", hash = "sha256:f986da9dbe545109f1c34a46188c8b7c8d5bc53ccfdd2d3a0c8002ac95721d1b"},
+]
+
+[package.dependencies]
+django = ">=3.2"
 
 [[package]]
 name = "django-stdimage"
@@ -521,4 +521,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "c8ae1f079b0309bbbc5a6a6c7d2ac7e15f3f6e2b6772400fbad7c2d25a9c6eb6"
+content-hash = "81171867e1d7c11cb1605568689a6bbee69cf06110a4a659d11bb0bf2037d41f"

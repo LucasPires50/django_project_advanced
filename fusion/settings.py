@@ -37,8 +37,7 @@ ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', config('ALLOWED_HOSTS'))]
 # Application definition
 
 INSTALLED_APPS = [
-    'django_adminlte',
-    'django_adminlte_theme',
+    'semantic_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

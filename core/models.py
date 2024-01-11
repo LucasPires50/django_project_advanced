@@ -1,7 +1,6 @@
 import uuid
 from django.db import models
 from djmoney.models.fields import MoneyField
-from django.core.validators import MinValueValidator
 from stdimage.models import StdImageField
 
 
@@ -86,7 +85,7 @@ class Recurso(Base):
     
 class Plano(Base):
     nome = models.CharField('Name', max_length=50)
-    valor = MoneyField('Valor', max_digits=4, decimal_places=0, default_currency='BRL', validators=[MinValueValidator(0)])
+    valor = MoneyField('Valor', max_digits=4, decimal_places=0, default_currency='BRL')
     icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
     numero_usuarios = models.CharField('Número de usuários', max_length=50)
     armazenamento = models.CharField('Armazenamento', max_length=50)
