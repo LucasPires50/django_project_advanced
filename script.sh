@@ -18,7 +18,9 @@
 # fi
 
 # poetry run python manage.py makemigrations
+# echo "makemigration aplicado"
 # poetry run python manage.py migrate
+# echo "migrações aplicadas"
 
 poetry run python manage.py runserver
 

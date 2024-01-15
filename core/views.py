@@ -3,7 +3,7 @@ from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib import messages
 
-from .models import Servico, Equipe, Recurso, Plano
+from .models import Servico, Equipe, Recurso, Plano, Depoimento
 from .forms import ContatoForm
 
 class IndexView(FormView):
@@ -19,6 +19,7 @@ class IndexView(FormView):
         context['equipes'] = Equipe.objects.order_by('?').all()
         context['recursos'] = Recurso.objects.order_by('?').all()
         context['planos'] = Plano.objects.order_by('valor').all().filter(ativo=True)
+        context['depoimentos'] = Depoimento.objects.order_by('nota').all()
         
         return context
     

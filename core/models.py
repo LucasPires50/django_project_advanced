@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from djmoney.models.fields import MoneyField
 from stdimage.models import StdImageField
 
@@ -98,3 +99,19 @@ class Plano(Base):
         
     def __str__(self):
         return self.nome
+
+class Depoimento(Base):
+    image = StdImageField('Imagens', upload_to=get_file_path, variations={'thumb': {'width':480, 'height':480, 'crop': True}})
+    nome = models.CharField('Name', max_length=50)
+    cargo = models.ForeignKey("core.Cargo", verbose_name='Cargo', on_delete=models.CASCADE)
+    depoimento = models.TextField('Descrição', max_length=100)
+    nota = models.IntegerField('Nota', validators=[MinValueValidator(0), MaxValueValidator(5)])
+
+    class Meta:
+        verbose_name = 'Depoimento'
+        verbose_name_plural = 'Depoimentos'
+        
+    def __str__(self):
+        return self.nome
+    
+    
