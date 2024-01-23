@@ -17,8 +17,8 @@ whitenoise = {extras = ["brotli"], version = "^6.6.0"}
 dj-database-url = "^2.1.0"
 django-money = "^3.4.1"
 django-semantic-admin = "^0.4.0"
-model-mommy = "^2.0.0"
 coverage = "^7.4.0"
+model-bakery = "^1.17.0"
 
 
 [build-system]
